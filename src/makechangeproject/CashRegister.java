@@ -10,8 +10,8 @@ public class CashRegister {
 		double paidAmount = 0.0;
 		double changeAmount = 0.0;
 		double result = 0;
-		double newAmount = 0;
-//		int changeInt = 0;
+	
+		
 
 		System.out.print("Hello customer! Please enter the price of your item: ");
 		itemAmount = sc.nextDouble();
@@ -28,18 +28,21 @@ public class CashRegister {
 		}
 
 		changeAmount = paidAmount - itemAmount;
-		System.out.println("Your change is $" + changeAmount);
+		
+		changeAmount = round(changeAmount * 100);
+		
+		System.out.println("Your change is $" + (changeAmount / 100));
 
-		changeAmount = (int)changeAmount * 100;
+		
 //		System.out.println((int)changeAmount);
 
 		// issuing out change feature ***********************
 
-		while (changeAmount > 0) {
+		while ((int)changeAmount > 0) {
 		if (changeAmount >= 2000) {
 			result = changeAmount / 2000;
 			changeAmount = changeAmount % 2000;
-			System.out.print("Your change back is " + (int) (result) + " twenty dollar bill(s)");
+			System.out.print("Your change back is " + (result) + " twenty dollar bill(s)");
 		}
 
 		if (changeAmount >= 1000) {
@@ -57,11 +60,45 @@ public class CashRegister {
 			changeAmount = changeAmount % 100;
 			System.out.print(" and " + (int) (result) + " one dollar bill(s)");
 		}
+			
 		if (changeAmount >= 25) {
-			result = changeAmount / 25;
-			changeAmount = changeAmount % 25;
-			System.out.print(" and " + (int) (result) + " quarter(s)");
+				result = changeAmount / 25;
+				changeAmount = changeAmount % 25;
+				System.out.print(" and " + (int) result + " quarter(s)");
 		}
+		if (changeAmount >= 10) {
+			result = changeAmount / 10;
+			changeAmount = changeAmount % 10;
+			System.out.print(" and " + (int) result + " dime(s)");
 		}
+		if (changeAmount >= 5) {
+			result = changeAmount / 5;
+			changeAmount = changeAmount % 5;
+			System.out.print(" and " + (int) result + " nickel(s)");
+		}
+		if (changeAmount >= 1) {
+			result = changeAmount / 1;
+			changeAmount = changeAmount % 1;
+			System.out.print(" and " + (int) result + " pennie(s)");
+			break;
+		}
+		
+		
+		}
+		
+		
+}
+
+
+//************************
+
+
+public static int round (double changeAmount) {
+	int round = 0;
+	if(changeAmount >=0) {
+	round = (int)(changeAmount + 0.09);	
+	}
+	return round;
 }
 }
+
