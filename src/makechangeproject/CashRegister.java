@@ -32,10 +32,6 @@ public class CashRegister {
 		System.out.println("");
 		System.out.println("Your change is $" + (changeAmount / 100) + " ." + " Your change will be given back in: ");
 
-//		System.out.println((int)changeAmount);
-
-		// issuing out change feature ***********************
-
 		while (changeAmount > 0) {
 			if (changeAmount >= 2000) {
 				result = changeAmount / 2000;
